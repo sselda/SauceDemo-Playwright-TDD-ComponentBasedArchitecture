@@ -15,45 +15,41 @@ This project demonstrates a hybrid UI + API automation architecture following cl
 ---
 
 # Architecture Overview
-
-The framework follows a layered structure:
-
+```
 src/test/java/com/saucedemo
-
+│
 ├── core
-│ └── BaseTest
+│   └── BaseTest
 │
 ├── pages
-│ ├── BasePage
-│ ├── LoginPage
-│ ├── ProductsPage
-│ ├── CartPage
-│ └── CheckoutPage
+│   ├── BasePage
+│   ├── LoginPage
+│   ├── ProductsPage
+│   ├── CartPage
+│   └── CheckoutPage
 │
 ├── components
-│ ├── BaseComponent
-│ ├── LoginFormComponent
-│ ├── ProductCardComponent
-│ └── CheckoutFormComponent
+│   ├── BaseComponent
+│   ├── LoginFormComponent
+│   ├── ProductCardComponent
+│   └── CheckoutFormComponent
 │
-├── api
-│ ├── client
-│ │ ├── BaseApiClient
-│ │ └── UserClient
-│ │
-│ ├── model
-│ │ ├── User
-│ │ └── UserResponse
-│ │
-│ ├── contract
-│ │ └── user-schema.json
-│ │
-│ └── tests
-│ ├── UserApiContractTest
-│ └── UserApiNegativeTest
-
-
----
+└── api
+    ├── client
+    │   ├── BaseApiClient
+    │   └── UserClient
+    │
+    ├── model
+    │   ├── User
+    │   └── UserResponse
+    │
+    ├── contract
+    │   └── user-schema.json
+    │
+    └── tests
+        ├── UserApiContractTest
+        └── UserApiNegativeTest
+```
 
 # 🎯 Key Design Principles
 
