@@ -51,9 +51,9 @@ src/test/java/com/saucedemo
         └── UserApiNegativeTest
 ```
 
-# 🎯 Key Design Principles
+# Key Design Principles
 
-### ✅ Component-Based UI Design
+### Component-Based UI Design
 Each reusable UI block is encapsulated as a component.
 
 Example:
