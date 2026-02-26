@@ -4,6 +4,7 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.saucedemo.pages.LoginPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -25,6 +26,17 @@ public class BaseTest {
     void tearDown() {
         browser.close();
         playwright.close();
+    }
+
+    public void loginAsStandardUser() {
+
+        LoginPage loginPage = new LoginPage(page);
+
+        loginPage.navigateToLoginPage();
+        loginPage.getLoginForm().enterUsername("standard_user");
+        loginPage.getLoginForm().enterPassword("secret_sauce");
+
+        loginPage.getLoginForm().submit();
     }
 
 }

@@ -2,23 +2,23 @@ package com.saucedemo.api.client;
 
 import io.restassured.response.Response;
 
+import static io.restassured.RestAssured.given;
 
 public class UserClient extends BaseApiClient{
 
-   public UserClient() {
-       super("https://reqres.in");
-   }
-
    public Response getUsers(int page) {
-       return request()
+       return given()
+               .spec(requestSpec)
                .queryParam("page", page)
                .when()
-               .get("/api/users")
-               .then()
-               .extract()
-               .response();
+               .get("/api/users");
    }
 
-
+   public Response getInvalidEndpoint() {
+       return given()
+               .spec(requestSpec)
+               .when()
+               .get("/api/invalid-endpoint");
+   }
 
 }

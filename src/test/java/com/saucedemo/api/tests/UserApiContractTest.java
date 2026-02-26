@@ -1,6 +1,5 @@
 package com.saucedemo.api.tests;
 
-import com.saucedemo.api.client.BaseApiClient;
 import com.saucedemo.api.client.UserClient;
 import com.saucedemo.api.model.UserResponse;
 import io.restassured.response.Response;
@@ -17,7 +16,7 @@ public class UserApiContractTest {
     @Test
     void shouldValidateUserApiContract() {
 
-        Response response = userClient.getUsers(2);
+        var response = userClient.getUsers(2);
         assertEquals(200, response.statusCode());
         response.then()
                 .assertThat()
@@ -39,9 +38,7 @@ public class UserApiContractTest {
     void shouldReturn404ForInvalidEndpoint() {
         UserClient userClient = new UserClient();
         int status =
-                userClient.request()
-                        .when()
-                        .get("/api/unknown")
+                userClient.getInvalidEndpoint()
                         .getStatusCode();
 
         assertEquals(404, status);

@@ -9,14 +9,13 @@ public class BaseApiClient {
 
     protected RequestSpecification requestSpec;
 
-    public BaseApiClient(String baseUrl) {
+    public BaseApiClient() {
         this.requestSpec = new RequestSpecBuilder()
-                .setBaseUri(baseUrl)
+                .setBaseUri("https://reqres.in")
+                .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/json")
+                .addHeader("User-Agent","Automation-Test")
                 .build();
     }
 
-    public RequestSpecification request() {
-        return given().spec(requestSpec);
-    }
 }
