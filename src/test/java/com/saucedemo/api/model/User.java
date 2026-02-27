@@ -1,14 +1,17 @@
 package com.saucedemo.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
     private int id;
     private String email;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
 
     public int getId() { return id; }
     public String getEmail() { return email; }
-    public String getFirst_name() { return first_name; }
-    public String getLast_name() { return last_name; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
 }

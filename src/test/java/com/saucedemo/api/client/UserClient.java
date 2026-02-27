@@ -6,19 +6,18 @@ import static io.restassured.RestAssured.given;
 
 public class UserClient extends BaseApiClient{
 
-   public Response getUsers(int page) {
+   public Response getUsers() {
        return given()
                .spec(requestSpec)
-               .queryParam("page", page)
                .when()
-               .get("/api/users");
+               .get("/users");
    }
 
    public Response getInvalidEndpoint() {
        return given()
                .spec(requestSpec)
                .when()
-               .get("/api/invalid-endpoint");
+               .get("/invalid");
    }
 
 }

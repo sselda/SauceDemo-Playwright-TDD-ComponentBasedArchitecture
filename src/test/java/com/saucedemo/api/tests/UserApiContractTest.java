@@ -6,8 +6,7 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserApiContractTest {
 
@@ -16,7 +15,7 @@ public class UserApiContractTest {
     @Test
     void shouldValidateUserApiContract() {
 
-        var response = userClient.getUsers(2);
+        Response response = userClient.getUsers();
         assertEquals(200, response.statusCode());
         response.then()
                 .assertThat()
@@ -26,17 +25,16 @@ public class UserApiContractTest {
     @Test
     void shouldMapResponseToModel() {
 
-        UserClient userClient = new UserClient();
         UserResponse response =
-                userClient.getUsers(2).as(UserResponse.class);
+                userClient.getUsers().as(UserResponse.class);
 
-        assertEquals(2, response.getPage());
-        assertFalse(response.getData().isEmpty());
+        assertFalse(response.getUsers().isEmpty());
+        assertTrue(response.getTotal() > 0);
     }
 
     @Test
     void shouldReturn404ForInvalidEndpoint() {
-        UserClient userClient = new UserClient();
+
         int status =
                 userClient.getInvalidEndpoint()
                         .getStatusCode();
